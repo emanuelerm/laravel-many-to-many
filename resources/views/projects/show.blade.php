@@ -12,9 +12,7 @@
                             <th>Description</th>
                             <th>Slug</th>
                             <th>Type / ID</th>
-                            @if ($project->technologys && count($project->technologys) > 0)
                             <th>Technologies</th>
-                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -24,9 +22,9 @@
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>{{ $project->type->name }} / {{ $project->type_id }}</td>
-                            @if ($project->technologys && count($project->technologys) > 0)
+                            @if ($project->technologies && count($project->technologies) > 0)
                                 <td class="d-flex flex-wrap overflow-hidden">
-                                    @foreach ($project->technologys as $technology)
+                                    @foreach ($project->technologies as $technology)
                                     {{ $technology->name }}
                                     @endforeach
                                 </td>

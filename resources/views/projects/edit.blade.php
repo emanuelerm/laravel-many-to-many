@@ -39,6 +39,30 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="form-group">
+                            <p>Choose technologies</p>
+                            <div class="d-flex flex-wrap align-items-center w-100 py-4">
+
+                                @foreach ($technologies as $technology)
+                                    <div>
+                                        @if ($errors->any())
+                                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="form-check-input"
+                                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                                        @else
+                                            <input type="checkbox" name="technologies[]" value="{{ $technology->id }}" class="form-check-input"
+                                                {{ $product->technologies->contains($technology) ? 'checked' : '' }}>
+                                        @endif
+
+                                        <label for="" class="form-check-label">{{ $technology->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                            @error('technologies')
+                                <div class="invalid-feedback">{{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-success">Save</button>
                         <button type="reset" class="btn btn-primary">Reset</button>
                 </form>

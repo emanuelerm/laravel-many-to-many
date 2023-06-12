@@ -11,8 +11,8 @@ class Technology extends Model
 
     protected $guarded = ['_token'];
 
-    public function project()
+    public function projects()
     {
-        return $this->belongsToMany(Technology::class);
+        return $this->belongsToMany(Project::class);
     }
 }
