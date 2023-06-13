@@ -52,6 +52,9 @@ class ProjectController extends Controller
         $newProject->fill($data);
         $newProject->type_id = $selectedTypeId;
         $newProject->save();
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        }
         return redirect()->route('admin.projects.show', $newProject->slug);
     }
 
